@@ -1,4 +1,54 @@
-<hello name="{{ name }}"></hello>
-<p>
-  Start editing to see some magic happen :)
-</p>
+<div class="bold ">Candidates</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Male">
+  <label class="form-check-label" for="inlineCheckbox1">Male</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Female">
+  <label class="form-check-label" for="inlineCheckbox2">Female</label>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First name</th>
+      <th scope="col">Last name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Gender</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let emp of empList">
+      <td>{{emp.id}}</td>
+      <td>{{emp.first_name}}</td>
+      <td>{{emp.last_name}}</td>
+      <td>{{emp.email}}</td>
+      <td>{{emp.gender}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="bold ">Add new Candidate</div>
+
+<form [formGroup]="formdata" (ngSubmit)="onSubmit()">
+  <div class="form-row">
+    <div class="col">
+      <input type="text" class="form-control" placeholder="First name" formControlName="first_name">
+    </div>
+    <div class="col">
+      <input type="text" class="form-control" placeholder="Last name" formControlName="last_name">
+    </div>
+    <div class="col">
+      <input type="email" class="form-control" placeholder="Email Id" formControlName="email">
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="Male" formControlName="gender">
+      <label class="form-check-label" for="inlineRadio1">Male</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="Female" formControlName="gender" >
+      <label class="form-check-label" for="inlineRadio2">Female</label>
+    </div>
+    <button type="submit" class="btn btn-success">Add</button>
+  </div>
+</form>
